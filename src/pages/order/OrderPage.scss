@@ -1,0 +1,57 @@
+.OrderPage {
+
+    &__in {
+        padding: 40px 0;
+        
+    }
+
+    &__head {
+        margin-bottom: 20px;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 42px;
+    }
+
+    &__body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &__form {
+        width: calc(100% - 500px);
+        margin-right: 15px;
+        border: 1px solid #EAEAEA;
+    }
+
+    &__total {
+        border: 1px solid #EAEAEA;
+        width: 500px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .OrderPage {
+
+        &__body {
+            flex-wrap: wrap;
+        }
+
+        &__form {
+            margin-right: 0;
+            width: 100%;
+        }
+
+        &__total {
+            width: 100%;
+            
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .OrderPage {
+
+        
+    }
+}

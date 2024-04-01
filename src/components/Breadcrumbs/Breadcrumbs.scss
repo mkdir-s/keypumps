@@ -1,0 +1,28 @@
+.Breadcrumbs {
+
+    &__in {
+        padding: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        margin-right: 10px;
+
+        &:last-child {
+            a {
+                color: #9D9D9D;
+            }
+        }
+        a {
+            line-height: 26px;
+            font-weight: 400;
+            color: var(--text);
+            transition: all .3s ease;
+            
+            &:hover {
+                color: var(--orange);
+            }
+        }
+    }
+}

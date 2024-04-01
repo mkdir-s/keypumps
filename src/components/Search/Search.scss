@@ -1,0 +1,100 @@
+.Search {
+    border-radius: 9px;
+    background: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    width: 100%;
+    &__input {
+        display: flex;
+        position: relative;
+
+        &_el {
+            display: block;
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: none;
+            background-color: transparent;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &_icon {
+            position: absolute; 
+            font-size: 20px;
+            top: calc(50% - 10px);
+            right: 15px;
+            color: var(--green);
+        }
+    }
+}
+
+.Result {
+    background-color: #F5F7F9;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: var(--);
+            background-color: var(--orange);
+
+            .Result__item_body {
+                color: #fff;
+            }
+        }
+
+        &_img {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            flex: 0 0 auto;
+            background-color: #cdcdcd;
+            border-radius: 5px;
+            margin-right: 10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: flex;
+            }
+        }
+
+        &_body {
+            color: var(--text);
+
+            &_name {
+                font-weight: 300;
+                font-size: 15px;
+                line-height: 24px;
+                margin-bottom: 5px;
+            }
+
+            &_price {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+    }
+
+    &__more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: var(--blue);
+        transition: all .3s ease;
+
+        &:hover {
+            color: var(--orange);
+        }
+    }
+}

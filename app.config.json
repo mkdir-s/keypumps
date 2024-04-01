@@ -1,0 +1,10 @@
+{
+  "apps" : [
+    {
+      "name"      : "key-pumps",
+      "script"    : "npm",
+      "interpreter": "none",
+      "args": "run start"
+    }
+  ]
+}

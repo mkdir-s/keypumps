@@ -1,0 +1,36 @@
+.mobFooter {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 62px;
+  background: rgba(30, 30, 30, 1);
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+}
+.mobFooter__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.mobFooter__list-item {
+  cursor: pointer;
+}
+.mobFooter__list-text {
+  display: block;
+  color: rgb(152, 152, 152);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 4px;
+}
+.mobFooter__list--active span {
+  color: #F6AB39;
+}
+.mobFooter__svg--active path {
+  stroke: #F6AB39;
+}

@@ -1,0 +1,51 @@
+.Counter {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--orange);
+
+    &__btn {
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    &__input {
+        width: 45px;
+        display: block;
+        text-align: center;
+        padding: 0 4px;
+        font-size: 17px;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none; // Yeah, yeah everybody write about it
+    }
+    
+    input[type='number'],
+    input[type="number"]:hover,
+    input[type="number"]:focus {
+        appearance: none;
+        -moz-appearance: textfield;
+    }
+}
+
+@media (max-width: 768px) {
+    .Counter {
+
+        padding: 3px 10px;
+        
+
+        &__input {
+            font-size: 14px;
+        }
+
+        &__btn {
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+.IconButton {
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    transition: all .3s ease;
+    cursor: pointer;
+    padding: 10px;
+
+    span {
+        transition: all .3s ease;
+        
+    }
+
+    &:hover {
+        span {
+            color: var(--orange);
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+    &__after {
+        margin-left: 5px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    &__before {
+        margin-right: 5px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    &__after.only-icon {
+        margin: 0 !important;
+    }
+    &__before.only-icon {
+        margin: 0 !important;
+    }
+
+    &__text {
+        letter-spacing: 0.05em;
+    }
+}
+
+.IconButton.warning {
+    background-color: var(--orange);
+    border-radius: 6px;
+
+    span {
+        color: #fff;
+    }
+
+    &:hover {
+        opacity: .6;
+        span {
+            color: #fff;
+        }
+    }
+}
+

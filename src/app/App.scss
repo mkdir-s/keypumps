@@ -1,0 +1,24 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+    
+    .Header {
+        flex: 0 0 auto;
+    }
+    .body-part {
+        flex: 1 0 auto;
+    }
+
+    .Footer {
+        flex: 0 0 auto;
+    }
+}
+.app-arrow {
+    position: fixed;
+    z-index: 11;
+    bottom: 10%;
+    right: 5%;
+    cursor: pointer;
+}

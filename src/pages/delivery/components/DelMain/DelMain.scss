@@ -1,0 +1,118 @@
+.DelMain {
+
+    &__in {
+        padding: 40px 0;
+    }
+
+    &__head {
+        font-weight: 500;
+        font-size: 31px;
+        line-height: 42px;
+        margin-bottom: 15px;
+    }
+
+    &__body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        &_item {
+            width: calc(100% / 3.2);
+            position: relative;
+            padding-top: 25px;
+
+            &:nth-child(1) {
+                .DelMain__body_item_pl {
+                    background-color: #445ECC;
+                }
+            }
+
+            &:nth-child(2) {
+                .DelMain__body_item_pl {
+                    background-color: #000;
+                }
+            }
+
+            &:nth-child(3) {
+                .DelMain__body_item_pl {
+                    background-color: #00B33C;
+                }
+            }
+
+
+            &_pl {
+                position: absolute;
+                top: 0;
+                right: 15px;
+                width: 115px;
+                height: 53px;
+                padding: 5px 10px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    display: flex;
+                }
+
+            }
+
+            &_img {
+                height: 212px;
+                margin-bottom: 15px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: flex;
+                }
+            }
+            &_descr {
+
+                &_name {
+                    padding-left: 15px;
+                    border-left: 2px solid var(--orange);
+                    margin-bottom: 12px;
+                }
+
+                &_list {
+
+                }
+
+                &_item {
+                    position: relative;
+                    padding-left: 20px;
+                    font-weight: 300;
+                    font-size: 14px;
+                    line-height: 19px;
+                    &:after {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 14px;
+                        height: 14px;
+                        background-image: url('../../../../assets/svg/dl-c.svg');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .DelMain {
+
+        &__body {
+            flex-wrap: wrap;
+
+            &_item {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+.ArticlePage {
+
+    &__in {
+        padding: 40px 0;
+    }
+    &__body {
+
+        &_head {
+
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 35px;
+            margin-bottom: 20px;
+        }
+
+        &_img {
+            height: 500px;
+            margin-bottom: 20px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: flex;
+            }
+        }
+
+        &_descr {
+            line-height: 27px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        &_info {
+            font-weight: 500;
+            opacity: .7;
+
+            &_part {
+                text-transform: uppercase;
+                margin-bottom: 4px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .ArticlePage {
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+
+         
+
+            &_img {
+                order: 1;
+                height: 200px;
+                margin-bottom: 10px;
+            }
+
+            &_info {
+                order: 2;
+                margin-bottom: 10px;
+            }
+
+            &_head {
+                order: 3;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 18px;
+            }
+
+            &_descr {
+                order: 4;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 16px;
+            }
+        }
+    }
+}

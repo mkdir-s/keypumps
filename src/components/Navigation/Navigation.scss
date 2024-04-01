@@ -1,0 +1,119 @@
+.Navigation {
+
+    &__menu {
+        // border-radius: 10px;
+        background-color: #fff;
+        // box-shadow: 0 0 10px 5px rgba(#000, .2);
+        // overflow: hidden;
+        position: relative;
+
+        &_item {
+
+            &_img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 320px;
+                opacity: 0;
+                transition: all .2s ease;
+                background-color: #fff;
+                transform: translateX(100%);
+                padding: 20px;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    display: flex;
+                }
+            }
+
+            &_link.active {
+                font-weight: 600;
+            }
+            
+            a {
+                padding: 10px;
+                transition: all .3s ease;
+                display: block;
+                font-size: 16px;
+                color: var(--text);
+                &:hover {
+                    background-color: var(--orange);
+                    color: #fff;
+                }
+            }
+
+            &:hover {
+
+                .Navigation__menu_item_img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    &__item {
+        margin: 0 20px;
+        cursor: pointer;
+
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        a {
+            color: var(--text);
+            transition: all .3s ease;
+            white-space: nowrap;
+
+            &:hover {
+                color: var(--orange);
+            }
+        }
+
+        &_link.active {
+            font-weight: 600;
+        }
+
+        
+
+        &_link-dr {
+            position: relative;
+
+            padding-right: 20px;
+
+            &:after {
+                position: absolute;
+                transition: all .3s ease;
+                width: 15px;
+                height: 15px;
+                right: 0;
+                top: calc(50% - (15px / 2));
+                background-image: url('../../assets/svg/nav-arrow.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                content: '';
+            }
+        }
+
+        &_link-dr.ant-dropdown-open {
+
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,129 @@
+.OrderTotal {
+
+    &__top {
+        padding: 15px 24px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 34px;
+        border-bottom: 1px solid #EAEAEA;
+    }
+
+
+    &__list {
+        padding: 15px 24px;
+        border-bottom: 1px solid #EAEAEA;
+
+        .OrderItem {
+            margin-bottom: 10px;
+        }
+
+        &_total {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+
+            &_name {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                margin-right: 8px;
+            }
+
+            &_value {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 26px;
+
+                input {
+                    
+                }
+            }
+        }
+    }
+
+    &__complect {
+        padding: 15px 24px;
+        border-bottom: 1px solid #EAEAEA;
+
+        &_name {
+            margin-bottom: 12px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        &_ch {
+
+        }
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 24px 12px 24px;
+        button {
+            width: 70%;
+        }
+
+        
+    }
+
+    &__promo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+        &_btn {
+            color: var(--orange);
+            cursor: pointer;
+        }
+    }
+
+    &__ex {
+        padding: 15px 24px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        border-top: 1px solid #EAEAEA;
+
+        a {
+            color: var(--orange);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .OrderTotal {
+        
+        &__top {
+            padding: 15px
+        }
+
+        &__list {
+            padding: 15px;
+        }
+
+        &__complect {
+            padding: 15px;
+        }
+
+        &__action {
+            padding: 15px;
+        }
+
+        &__promo {
+            padding: 15px;
+        }
+
+        &__ex {
+            padding: 15px;
+        }
+    }
+}

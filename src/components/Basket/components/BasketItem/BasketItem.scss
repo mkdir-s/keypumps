@@ -1,0 +1,116 @@
+.BasketItem {
+    display: flex;
+    // align-items: center;
+    margin-bottom: 15px;
+
+    &__img {
+        background-color: #cdcdcd;
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-right: 20px;
+        flex: 0 0 auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+
+        &_top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+    
+            &_name {
+                text-transform: uppercase;
+                line-height: 26px;
+                font-weight: 500;
+                margin-right: 15px;
+            }
+    
+            &_delete {
+                color: var(--orange);
+                transition: all .2s ease;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+    
+                span {
+                    margin-left: 10px;
+                }
+    
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+
+        &_action {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            
+
+            &_price {
+                font-weight: 500;
+                line-height: 26px;
+                font-size: 20px;
+                
+                input {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 650px) {
+    .BasketItem {
+
+        &__img {
+            width: 70px;
+            height: 70px;
+        }
+
+        &__body {
+            &_action {
+                flex-direction: column;
+                align-items: flex-end;
+                padding-top: 20px;
+                
+                .Counter {
+                    margin-bottom: 10px;
+                }
+
+                &_price {
+                    font-size: 14px;
+                }
+            }
+            &_top {
+
+                &_name {
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+
+                &_delete {
+                    
+                    &_text {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,134 @@
+.AboutFb {
+    background-color: #F5F7F9;
+
+    &__in {
+        padding: 40px 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &__form {
+        width: 395px;
+        &_head {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 31px;
+            line-height: 120%;
+        }
+
+        &_text {
+            font-weight: 300;
+            font-size: 19px;
+            line-height: 24px;
+            margin-bottom: 20px;
+        }
+
+        &_body {
+
+            &_item {
+                margin-bottom: 15px;
+
+                input {
+                    padding: 12px 16px;
+                    border-radius: 11px;
+                    background-color: #fff;
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__ct {
+        width: 100%;
+        padding-left: 30px;
+        max-width: 660px;
+        &_head {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 31px;
+            line-height: 120%;
+        }
+
+        &_body {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -8px;
+            margin-right: -8px;
+            
+            &_item {
+                width: calc((100% / 3) - 16px);
+                margin: 0 8px;
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                &_descr {
+                    margin-bottom: 12px;
+                    &_name {
+                        margin-bottom: 15px;
+                        font-weight: 600;
+                    }
+
+                    &_val {
+                        font-weight: 300;
+                    }
+                }
+
+                &_img {
+                    height: 150px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: flex;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .AboutFb {
+
+        &__in {
+            flex-wrap: wrap;
+        }
+
+        &__form {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        &__ct {
+            width: 100%;
+            max-width: unset;
+            padding-left: 0;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .AboutFb {
+
+        &__ct {
+
+            &_body {    
+                flex-wrap: wrap;
+                &_item {
+                    width: 100%;
+
+                    &_img {
+                        height: 250px;
+                    }
+                }
+            }
+        }
+    }
+}

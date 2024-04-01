@@ -1,0 +1,26 @@
+.Chars {
+    padding: 20px;
+    background: #F6F7F9;
+    border-radius: 11px;
+
+    &__item {
+        padding: 15px 12px;
+        border-radius: 11px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+
+        &:nth-child(even) {
+            background-color: #fff;
+        }
+        &_name {
+            width: 48%;
+        }
+
+        &_value {
+            width: 48%;
+        }
+    }
+}

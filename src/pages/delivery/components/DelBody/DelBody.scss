@@ -1,0 +1,131 @@
+.DelBody {
+
+    &__in {
+        padding: 40px 0;
+    }   
+
+    
+
+    &__part {
+
+        padding: 20px 0;
+        border-bottom: 1px solid #C4CDD5;
+
+        &_head {
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-size: 31px;
+            line-height: 42px;
+        }
+
+
+        &_content.pay {
+
+            .DelBody__part_content_item {
+
+                &:first-child {
+                    .DelBody__part_content_item_name {
+
+                        &:after {
+                            background-image: url('../../../../assets/svg/del-pay-1.svg');
+                        }
+                    }
+                }
+
+                &:last-child {
+
+                    .DelBody__part_content_item_name {
+
+                        &:after {
+                            background-image: url('../../../../assets/svg/del-pay-2.svg');
+                        }
+                    }
+                }
+
+                &_name {
+                    padding-left: 32px;
+                    position: relative;
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 30px;
+                    &:after {
+                        position: absolute;
+                        top: 5px;
+                        left: 0;
+                        width: 20px;
+                        height: 20px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                        content: '';
+                        
+                    }
+                }
+            }
+        }
+        
+
+        &_content {
+            
+            &_item {
+                margin-bottom: 24px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &_name {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 26px;
+                    margin-bottom: 12px;
+                }
+
+                &_list {
+
+                    &_item {
+                        position: relative;
+                        padding-left: 20px;
+                        margin-bottom: 8px;
+                        color: #454F5B;
+
+                        &:after {
+                            content: '';
+                            border-radius: 100%;
+                            background-color: var(--orange);
+                            width: 8px;
+                            height: 8px;
+                            top: 5px;
+                            left: 0;
+                            position: absolute;
+                        }
+                    }
+                }
+
+                &_text {
+                    color: #4D4D4D;
+                    span {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .DelBody {
+        border-top: 1px solid #C4CDD5;
+
+        &__in {
+            padding-top: 0;
+        }
+
+        &__part {
+
+            &_head {
+                font-size: 24px;
+                line-height: 26px;
+            }
+        }
+    }
+}

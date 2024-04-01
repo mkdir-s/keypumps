@@ -1,0 +1,58 @@
+.Radio {
+    
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        z-index: -1;
+        pointer-events: none;
+        touch-action: none;
+    }
+
+    input:checked ~ .Radio__body {
+
+        .Radio__body_icon {
+            border-color: var(--orange);
+
+            &:after {
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__body {   
+        display: flex;
+        align-items: flex-start;
+        cursor: pointer;
+        &_icon {
+            flex: 0 0 auto;
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            border: 1px solid #9E9AA4;
+            position: relative;
+            margin-right: 8px;
+
+            &:after {
+                content: '';
+                width: 8px;
+                height: 8px;
+                border-radius: 100%;
+                background-color: var(--orange);
+                position: absolute;
+                top: calc(50% - 4px);
+                left: calc(50% - 4px);
+                transform: scale(0);
+                transition: all .2s ease;
+            }
+        }
+
+        &_text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            
+        }
+    }
+}

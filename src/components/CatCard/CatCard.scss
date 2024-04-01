@@ -1,0 +1,82 @@
+.CatCard {
+    height: 340px;
+    width: 100%;
+    position: relative;
+    border: 1px solid #EEEEEE;
+    border-radius: 11px;
+    display: flex;
+    align-items: flex-end;
+    background: #EFF7FF;
+    overflow: hidden;
+
+    &:after {
+        position: absolute;
+        top: -300px;
+        right: -300px;
+        width: 600px;
+        height: 600px;
+        background-color: #fff;
+        content: '';
+        border-radius: 100%;
+
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 65%;
+        padding: 15px 25px 0 0;
+        z-index: 2;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+        }
+    }
+
+    &__body {
+        // height: 35%;
+        padding: 15px 25px;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        &_name {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 19px;
+            line-height: 31px;
+            text-transform: uppercase;
+        }
+
+        &_action {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .CatCard {
+        height: 200px;
+        &:after {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+        }
+
+        &__body {
+
+            &_name {
+                font-size: 11px;
+                line-height: 120%;
+            }
+        }
+    }
+}

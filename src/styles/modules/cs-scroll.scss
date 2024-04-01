@@ -1,0 +1,14 @@
+.cs-scroll {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: var(--text);
+        // border-radius: 60px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: var(--orange);
+        border-radius: 30px;
+        width: 100%;
+    }
+}

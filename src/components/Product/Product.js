@@ -2,10 +2,10 @@ import './Product.scss';
 import { useEffect, useState } from 'react';
 import placeholder from '../../assets/prod-pl.png';
 import { Link } from 'react-router-dom';
-import {ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import IconButton from '../IconButton/IconButton';
 import Counter from '../Counter/Counter';
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NumericFormat } from 'react-number-format';
 import { addItemToBasket, removeItemFromBasket } from '../../store/actions';
@@ -41,9 +41,6 @@ const Product = ({
         
     }, [basketList])
 
-    
-
-
     useEffect(() => {
         if(discount !== null) {
             let tt = (price - discount) / price * 100;
@@ -51,9 +48,6 @@ const Product = ({
         }
         
     }, [discount])
-
-    
-
 
     const decHandle = () => {
         if(count == 0) {
@@ -97,10 +91,7 @@ const Product = ({
         }
     }
 
-    
-
-
-
+    const link = "/catalog/" + encodeURIComponent(category) + "/" + encodeURIComponent(title) + "/" + id;
 
     return (
         <div className="Product">
@@ -115,9 +106,8 @@ const Product = ({
                     <div className="Product__dsc">-{dsc}%</div>
                 ) : null
             }
-            
 
-            <Link to={`/catalog/${category}/${title}`} className="Product__img">
+            <Link to={link} className="Product__img">
                 {
                     productImages?.photosLinks?.length > 0 ? (
                         <img src={productImages?.photosLinks[0]} alt="" />
@@ -127,17 +117,17 @@ const Product = ({
                 }
             </Link>
             <div className="Product__body">
-                <Link to={`/catalog/${category}/${title}`} className="Product__body_name">{title}</Link>
+                <Link to={link} className="Product__body_name">{title}</Link>
                 <div className="Product__body_action">
-                    <div className="Product__body_action_price"><NumericFormat readOnly thousandSeparator={' '} thousandsGroupStyle={'thousand'} value={discount ? discount : price} suffix={'₽'}/>
+                <div className="Product__body_action_price"><NumericFormat readOnly thousandSeparator={' '} thousandsGroupStyle={'thousand'} value={discount ? discount : price} suffix={'₽'}/>
                     
-                        {
-                            discount ? (
-                                <span><NumericFormat readOnly radioGroup='' thousandSeparator={' '} thousandsGroupStyle={'thousand'} value={discount ? price : null} suffix={'₽'}/></span>
-                            ) : null
-                        }
-                        {price}
-                        </div>
+                    {
+                        discount ? (
+                            <span><NumericFormat readOnly radioGroup='' thousandSeparator={' '} thousandsGroupStyle={'thousand'} value={discount ? price : null} suffix={'₽'}/></span>
+                        ) : null
+                    }
+                    {price}
+                    </div>
                     <div className="Product__body_action_bsk">
                         {
                             count === 0 ? (

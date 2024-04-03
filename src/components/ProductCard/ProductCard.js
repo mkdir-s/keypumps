@@ -73,10 +73,10 @@ const FastOrder = ({visible, close}) => {
                 validate={(values) => {
                     const errors = {};
                     if(!values.name) {
-                        errors.name = 'Обьязательное поле'
+                        errors.name = 'Обязательное поле'
                     }
                     if(!values.email) {
-                        errors.email = 'Обьязательное поле'
+                        errors.email = 'Обязательное поле'
                     }
                     return errors;
                 }}
@@ -278,7 +278,7 @@ const ProductCard = ({
                     {data.title}
                 </h3>
                 <div className="ProductCard__info_price">
-                    <div className="ProductCard__info_price_main">
+                <div className="ProductCard__info_price_main">
                         
                         {/* <NumericFormat 
                             readOnly

@@ -12,13 +12,13 @@ const ds = new dataService();
 
 
 const ProductPage = () => {
-    const {category, title} = useParams();
+    const {category, title, id} = useParams();
     const [productInfo, setProductInfo] = useState({})
     const [recent, setRecent] = useState([]);
 
 
     useEffect(() => {
-        ds.getDetailProduct(title).then(res => {
+        ds.getDetailProduct(title, id).then(res => {
             
             setProductInfo(res?.post)
         })

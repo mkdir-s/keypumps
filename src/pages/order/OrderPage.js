@@ -13,7 +13,7 @@ import EmptyList from '../../components/Placeholders/EmptyList/EmptyList';
 import { NumericFormat } from 'react-number-format';
 import Button from '../../components/Button/Button';
 import dataService from '../../services/dataService';
-import { message } from 'antd';
+import { notification } from 'antd';
 const _ = require('lodash');
 
 const ds = new dataService()
@@ -24,17 +24,48 @@ const ds = new dataService()
 const OrderPage = () => {
     const basketList = useSelector(state => state);
     const [total, setTotal] = useState(0);
-    const [arts, setArts] = useState([]);
+    const [arts, setArts] = useState('');
+
     
+
+
+
+    const setNamesOfGoodsToForm = () => {
+        const names = basketList.map(item => item.name);
+        return names.join(' ');
+    }
 
     useEffect(() => {
         let countTotal = basketList?.map(item => item.price * item.count);
         setTotal(_.sum(countTotal))
-        setArts(basketList.map(item => item.articul))
+
+        const names = basketList.map(item => item.name);
+        const namesString = names.join(' ');
+        setArts(namesString);
     }, [basketList])
 
 
+    const handleSubmit = async (values) => {
+        try {
+            values.carts = setNamesOfGoodsToForm();
+            const response = await fetch('https://goldensoft.tech/keypumps.php', {
+                method: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
+                body: JSON.stringify(values)
+            });
 
+            if (response.ok) {
+                notification.success({message: 'Данные успешно отправлены'})
+            } else {
+                notification.error({message: 'Произошла ошибка при отправке данных'})
+            }
+        } catch (error) {
+            notification.error({message: 'Произошла ошибка при отправке данных'})
+            console.error('Произошла ошибка:', error);
+        }
+    }
 
 
     
@@ -52,55 +83,58 @@ const OrderPage = () => {
                     </div>
                     <Formik
                         initialValues={{
-                            NAME: '', //имя
-                            LAST_NAME: '', //familiya
-                            PHONE: '', // telefon
-                            EMAIL: '', //email
+                            name: '', //имя
+                            secondname: '', //familiya
+                            phone: '', // telefon
+                            email: '', //email
                             UF_CRM_1663688621868: 27, //otdelenie nomer
-                            UF_CRM_1663688669703: '', //city
-                            ADDRESS: '', //adress
-                            UF_CRM_1663424366166: arts, //arrtikuly towarow
+                            town: '', //city
+                            adress: '', //adress
+                            carts: setNamesOfGoodsToForm(), //arrtikuly towarow
                             UF_CRM_1663688720594: 0, //nuzhna li ustanovka
                             UF_CRM_1663422176950: '' //promokod
                         }}
                         validate={values => {
                             const errors = {}
 
-                            if(!values.ADDRESS) {
-                                errors.ADDRESS = 'Обьязательное поле'
+                            if(!values.adress) {
+                                errors.adress = 'Обьязательное поле'
                             }
-                            if(!values.EMAIL) {
-                                errors.EMAIL = 'Обьязательное поле'
+                            if(!values.email) {
+                                errors.email = 'Обьязательное поле'
                             }
-                            if(!values.LAST_NAME) {
-                                errors.LAST_NAME = 'Обьязательное поле'
+                            if(!values.secondname) {
+                                errors.secondname = 'Обьязательное поле'
                             }
-                            if(!values.NAME) {
-                                errors.NAME = 'Обьязательное поле'
+                            if(!values.name) {
+                                errors.name = 'Обьязательное поле'
                             }
-                            if(!values.PHONE) {
-                                errors.PHONE = 'Обьязательное поле'
+                            if(!values.phone) {
+                                errors.phone = 'Обьязательное поле'
                             }
                             
                             if(!values.UF_CRM_1663688621868) {
                                 errors.UF_CRM_1663688621868 = 'Обьязательное поле'
                             }
-                            if(!values.UF_CRM_1663688669703) {
-                                errors.UF_CRM_1663688669703 = 'Обьязательное поле'
+                            if(!values.town) {
+                                errors.town = 'Обьязательное поле'
                             }
                             return errors
                         }}
-                        onSubmit={(values, {setSubmitting}) => {
-                            
-                            ds.order(values).then(res => {
-                                console.log(res)
-                                if(!res) {
-                                    message.error('Не удалось подтвердить заказ, повторите позже')
-                                }
-                            }).catch(_ => {
-                                
-                                message.error('Не удалось подтвердить заказ, повторите позже')
-                            }).finally(_ => setSubmitting(false))
+                        onSubmit={(values, {setSubmitting, resetForm}) => {
+                            handleSubmit(values)
+                            resetForm({
+                                name: '', //имя
+                                secondname: '', //familiya
+                                phone: '', // telefon
+                                email: '', //email
+                                UF_CRM_1663688621868: 27, //otdelenie nomer
+                                town: '', //city
+                                adress: '', //adress
+                                carts: setNamesOfGoodsToForm(), //arrtikuly towarow
+                                UF_CRM_1663688720594: 0, //nuzhna li ustanovka
+                                UF_CRM_1663422176950: '' //promokod
+                            })
                         }}>
 
                         {
@@ -121,12 +155,12 @@ const OrderPage = () => {
                                                                 <input 
                                                                     onBlur={handleBlur}
                                                                     onChange={handleChange} 
-                                                                    value={values.LAST_NAME} 
-                                                                    name='LAST_NAME' 
+                                                                    value={values.secondname} 
+                                                                    name='secondname' 
                                                                     type="text" 
                                                                     placeholder='Зайцев' />
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.LAST_NAME && touched.LAST_NAME ? errors.LAST_NAME : null}
+                                                                    {errors.secondname && touched.secondname ? errors.secondname : null}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -135,13 +169,13 @@ const OrderPage = () => {
                                                                 <div className="OrderForm__part_body_item_input_label">Имя</div>
                                                                 <input 
                                                                     onBlur={handleBlur}
-                                                                    name='NAME' 
+                                                                    name='name' 
                                                                     type="text" 
                                                                     placeholder='Михаил'
                                                                     onChange={handleChange}
-                                                                    value={values.NAME} />
+                                                                    value={values.name} />
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.NAME && touched.NAME ? errors.NAME : null}
+                                                                    {errors.name && touched.name ? errors.name : null}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -153,12 +187,12 @@ const OrderPage = () => {
                                                                 <input 
                                                                     onBlur={handleBlur}
                                                                     onChange={handleChange}
-                                                                    value={values.PHONE}
-                                                                    name='PHONE' 
+                                                                    value={values.phone}
+                                                                    name='phone' 
                                                                     type="tel" 
                                                                     placeholder='+7 (966) 45 54 698' />
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.PHONE && touched.PHONE ? errors.PHONE : null}
+                                                                    {errors.phone && touched.phone ? errors.phone : null}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -168,12 +202,12 @@ const OrderPage = () => {
                                                                 <input 
                                                                     onBlur={handleBlur}
                                                                     onChange={handleChange}
-                                                                    value={values.EMAIL}
-                                                                    name='EMAIL' 
+                                                                    value={values.email}
+                                                                    name='email' 
                                                                     type="email" 
                                                                     placeholder='example@mail.ru' />
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.EMAIL && touched.EMAIL ? errors.EMAIL : null}
+                                                                    {errors.email && touched.email ? errors.email : null}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -192,13 +226,13 @@ const OrderPage = () => {
                                                                 <input 
                                                                     onBlur={handleBlur}
                                                                     onChange={handleChange}
-                                                                    value={values.UF_CRM_1663688669703}
-                                                                    name={'UF_CRM_1663688669703'}
+                                                                    value={values.town}
+                                                                    name={'town'}
                                                                     type="text" 
                                                                     placeholder='Город'/>
                                                                 
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.UF_CRM_1663688669703 && touched.UF_CRM_1663688669703 ? errors.UF_CRM_1663688669703 : null}
+                                                                    {errors.town && touched.town ? errors.town : null}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -208,12 +242,12 @@ const OrderPage = () => {
                                                                 <input 
                                                                     onBlur={handleBlur}
                                                                     onChange={handleChange}
-                                                                    value={values.ADDRESS}
-                                                                    name={'ADDRESS'}
+                                                                    value={values.adress}
+                                                                    name={'adress'}
                                                                     type="text" 
                                                                     placeholder='Адрес'/>
                                                                 <div style={{color: 'red'}}>
-                                                                    {errors.ADDRESS && touched.ADDRESS ? errors.ADDRESS : null}
+                                                                    {errors.adress && touched.adress ? errors.adress : null}
                                                                 </div>
                                                             </div>
                                                         </div>

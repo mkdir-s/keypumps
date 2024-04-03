@@ -11,6 +11,7 @@ const {Option} = Select;
 
 const FilterList = ({list, chips, removeFilter, loading, setSorting, showMore, totalLength, setOffset, btnDis, fns}) => {
 
+    console.log("FilterList", list);
    
 
     const sortHandle = (value) => {
@@ -59,13 +60,15 @@ const FilterList = ({list, chips, removeFilter, loading, setSorting, showMore, t
                         list?.length > 0 ? (
                             list.map((item, index) => (
                                 <div className="FilterList__body_item" key={index}>
-                                    <Product 
+                                    <Product
+                                        id={item.product._id}
+                                        category={item.product.category}
                                         price={item.product.price}
                                         title={item.product.title}
                                         productImages={item.images}
                                         discount={item.product.discountPrice}
                                         top={item.product.topSales}
-                                        />
+                                    />
                                 </div>
                             ))
                         ) : <EmptyList text={'Ничего не найдено'}/>

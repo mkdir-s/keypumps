@@ -3,3 +3,4 @@ cd /home/apps/cli
 git pull
 npm i
 npm run build
+#cp -r -f build/* /var/www/html

@@ -31,7 +31,7 @@ const Navigation = () => {
                           catalogList && catalogList.length > 0 ? (
                             catalogList.map((item,index) => (
                               <li className="Navigation__menu_item" key={index}>
-                                <NavLink to={`/catalog/${item.title}`}>{item.title}</NavLink>
+                                <NavLink onClick={window.location.reload} to={`/catalog/${item.title}`}>{item.title}</NavLink>
                                 <div className="Navigation__menu_item_img">
                                   {
                                     item.categoryImage?.photosLinks?.length > 0 ? (

@@ -4,6 +4,8 @@ import {PhoneFilled} from '@ant-design/icons';
 import { Formik, Form, Field } from 'formik';
 import { useEffect } from 'react';
 import dataService from '../../services/dataService';
+import { initial } from 'lodash';
+import {notification} from 'antd';
 
 
 
@@ -17,13 +19,36 @@ const formInit = {
 
 
 const Fb = () => {
+    
+
+    const handleSubmit = async (values) => {
+        try {
+
+            const response = await fetch('https://goldensoft.tech/keypumps.php', {
+                method: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
+                body: JSON.stringify(values)
+            });
+
+            if (response.ok) {
+                notification.success({message: 'Данные успешно отправлены'})
+            } else {
+                notification.error({message: 'Произошла ошибка при отправке данных'})
+            }
+        } catch (error) {
+            notification.error({message: 'Произошла ошибка при отправке данных'})
+            console.error('Произошла ошибка:', error);
+        }
+    }
 
     
     return (
         <div className="Fb">
             <div className="container">
                 <div className="Fb__in">
-                    <div className="Fb__cb"><PhoneFilled style={{transform: 'scale(-1, 1)'}}/></div>
+                    {/* <div className="Fb__cb"><PhoneFilled style={{transform: 'scale(-1, 1)'}}/></div> */}
                     
                     <h2 className="Fb__title section-title">Мы Вам перезвоним</h2>
                     <div className="Fb__text">
@@ -42,10 +67,9 @@ const Fb = () => {
                             }
                             return errors;
                         }}
-                        onSubmit={(values, {setSubmitting}) => {
-                            ds.fb(values).then(res => {
-                                console.log(res)
-                            })
+                        onSubmit={(values, {setSubmitting, resetForm}) => {
+                            handleSubmit(values)
+                            resetForm(formInit)
                         }}>
                             {({isSubmitting, errors, touched, values, handleChange, handleBlur}) => (
                                 <Form 

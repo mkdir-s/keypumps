@@ -20,7 +20,7 @@ import Footer from "../components/Footer/Footer";
 import MobFooter from "../components/MobFooter/MobFooter";
 
 import Mobmenu from "../components/Mobmenu/Mobmenu";
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Arrow from '../assets/arrow-top.svg';
 
 
@@ -51,9 +51,9 @@ const App = () => {
       app.current.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-
     return (
-        <div ref={app}  className="App" onScroll={handleScroll}>
+        <div ref={app}  className="App">
+           
             <Header/>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
@@ -64,7 +64,7 @@ const App = () => {
                 <Route path="/delivery" element={<DeliveryPage/>}/>
                 <Route path="/faq" element={<FaqPage/>}/>
                 <Route path="/order" element={<OrderPage/>}/>
-                <Route path="/catalog/:category/:title" element={<ProductPage/>}/>
+                <Route path="/catalog/:category/:title/:id" element={<ProductPage/>}/>
                 <Route path="/articles/:article" element={<ArticlePage/>}/>
             </Routes>
             <Footer/>

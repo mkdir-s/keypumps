@@ -10,8 +10,6 @@ const Filter = ({filters, selectFilters, selected, priceFilter, setOffset}) => {
     const [priceStart, setPriceStart] = useState(0);
     const [priceEnd, setPriceEnd] = useState(2000000);
 
-  
-
     const handlePriceChangeSlider = (v) => {
         setPriceStart(v[0]);
         setPriceEnd(v[1])
@@ -30,8 +28,6 @@ const Filter = ({filters, selectFilters, selected, priceFilter, setOffset}) => {
         setOffset(0)
         priceFilter(v[0], v[1])
     }
-
-
 
     // фильтарция
 
@@ -56,10 +52,6 @@ const Filter = ({filters, selectFilters, selected, priceFilter, setOffset}) => {
         setOffset(0)
     }
 
-    
-    
-
-
 
     return (
         <div className="Filter">
@@ -68,7 +60,7 @@ const Filter = ({filters, selectFilters, selected, priceFilter, setOffset}) => {
             </div>
             <div className="Filter__body">
                 <h3 className="Filter__body_name">Фильтр</h3>
-                <div className="Filter__body_part">
+                <div className="Filter__body_part" style={{ display: "none" }}>
                     <Collapse expandIconPosition='end'>
                         <Panel header='Цена'>
                             <div className="Filter__body_part_in">
@@ -116,8 +108,6 @@ const Filter = ({filters, selectFilters, selected, priceFilter, setOffset}) => {
                                             }}
                                             onMouseUp
                                             onChange={handlePriceChangeSlider}
-                                            
-                                            
                                             />
                                     </div>
                                 </div>

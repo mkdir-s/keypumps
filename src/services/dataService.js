@@ -93,9 +93,9 @@ export default class dataService {
         }
     }
 
-    getDetailProduct = async (name) => {
+    getDetailProduct = async (name, id) => {
         try {
-            let res = await fetch(endpoints.detailProduct + `&postTitle=${name}`, {
+            let res = await fetch(endpoints.detailProduct + `&postTitle=${name}&id=${id}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers,

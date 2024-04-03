@@ -12,10 +12,6 @@ import {motion} from 'framer-motion';
 
 const ds = new dataService();
 
-
-
-
-
 const FilterPage = () => {
     const {loading, setLoading} = useContent();
     const [recentList, setRecentList] = useState([]);
@@ -39,7 +35,7 @@ const FilterPage = () => {
 
     useEffect(() => {
         document.body.classList.add('touch-disabled')
-        if(categoryTitle) {
+        if (categoryTitle) {
             ds.getPopularProds().then(res => setRecentList(res))
             ds.getDetailCategory(categoryTitle).then(res => {
                 setSelectedFilters([])
@@ -48,26 +44,17 @@ const FilterPage = () => {
         }
     }, [categoryTitle])
 
-
-
-
-
     // useEffect(() => {
     //     setOffset(0)
     // }, [sorting, categoryTitle])
-
-  
-
-
 
     // фильтровать
     useEffect(() => {
         document.body.classList.add('touch-disabled')
         setLoading(true)  
 
-
-        if(categoryTitle && sorting) {
-            if(offset == 0) {
+        if (categoryTitle && sorting) {
+            if (offset == 0) {
                 
                 ds.getProductFilter(
                     categoryTitle, 
@@ -76,26 +63,23 @@ const FilterPage = () => {
                     endPrice, 
                     count,
                     offset,
-                    sorting).then(res => {
-                      
+                    sorting
+                ).then(res => {
+                    console.log("FILTER", res);
                     setTotalLength(res.length);
                     setCatProds(res)
 
-                    
-                    
                     if(res.length <= 0) {
                         setFns(true)
                     } else {
                         setFns(false)
                     }
-
-                    
                 }).finally(_ => {
                     setLoading(false)
                     document.body.classList.remove('touch-disabled')
                 })
             }
-            if(offset > 0) {
+            if (offset > 0) {
                
                 setBtnDis(true)
                 ds.getProductFilter(
@@ -105,8 +89,8 @@ const FilterPage = () => {
                     endPrice, 
                     count,
                     offset,
-                    sorting).then(res => {
-                        
+                    sorting
+                ).then(res => {
                     setTotalLength(res.length);
                     setCatProds(state => {
                         return [
@@ -115,7 +99,7 @@ const FilterPage = () => {
                         ]
                     })
                     
-                    if(res.length <= 0) {
+                    if (res.length <= 0) {
                         setFns(true)
                     } else {
                         setFns(false)
@@ -132,14 +116,6 @@ const FilterPage = () => {
         
     }, [selectedFilters, startPrice, endPrice, sorting, categoryTitle, count, offset])
 
-
-
-
-
-
-
-
-
     const priceFilter = (start, end) => {
         setStartPrice(start)
         setEndPrice(end)
@@ -149,8 +125,6 @@ const FilterPage = () => {
             return state.filter(item => item != chip);
         })
     }
-
-
 
     return (
         <motion.div 
@@ -172,7 +146,6 @@ const FilterPage = () => {
                             priceFilter={priceFilter}
                             setOffset={setOffset}/>
 
-                        
                         <FilterList
                             totalLength={totalLength} 
                             loading={loading}
